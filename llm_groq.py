@@ -7,7 +7,7 @@ load_dotenv()
 
 client = Groq()
 
-def call_groq_llm(user_query,context,model="llama-3.3-70b-versatile"):
+def call_groq_llm(user_query,context,model="meta-llama/llama-4-scout-17b-16e-instruct"):
     response = client.chat.completions.create(
     messages=[
         # Set an optional system message. This sets the behavior of the

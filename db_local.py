@@ -36,6 +36,9 @@ def save_documents(documents: list[str], metadatas=None):
 def query_documents(query: str, k: int = 3):
     embedding = get_embedding(query).tolist()
     results = collection.query(query_embeddings=[embedding], n_results=k)
+    print("Query Results:")
+    print(results)
+    print("\n\n\n")
     return results['documents'][0] if results['documents'] else []
 
 
