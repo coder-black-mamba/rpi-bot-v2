@@ -2,7 +2,7 @@ qs=[
     {
       "category": "Admissions",
       "question": "What are the requirements for undergraduate admission?",
-      "answer": "You need a minimum GPA of 3.5 in both SSC and HSC and must pass the admission test."
+      "answer": "You need a minimum GPA of 4 in  SSC  and must pass the admission test."
     },
     {
       "category": "Library",

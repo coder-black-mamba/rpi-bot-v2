@@ -1,24 +1,7 @@
-from database import save_documents, query_documents
+from db_local import save_documents, query_documents
 from llm_groq import call_groq_llm
 from qs import qs
 
-
-def load_data():
-    print("📥 Please Wait . Data Loading.......")
-    initial= 0
-    total= len(qs)
-    print(f"📥 Total {total} data found. Loading data into database......")
-    for data in qs:
-        category = data['category']
-        question = data['question']
-        answer = data['answer']
-
-        redefined_str= f"{question} | {answer}"
-        save_documents([redefined_str], metadatas=[{"category": category}])
-        print(f"📥 Loading {initial+1}/{total} data into database......")
-        initial += 1
-
-    print("📥 Data loaded successfully into the database.")
 
 def save_to_file(text, filename):
     """
@@ -60,7 +43,7 @@ def run_bot():
  
 
 try:
-    load_data()
+    # load_data()
     run_bot()
 except Exception as e:
     print(f"An error occurred: {e}")

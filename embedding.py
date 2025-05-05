@@ -4,7 +4,7 @@ import numpy as np
 
 # fasttext.util.download_model('bn', if_exists='ignore')
 print("Loading FastText model...Please wait.")
-model = fasttext.load_model("model/cc.bn.300.bin")
+model = fasttext.load_model("models/cc.bn.300.bin")
 
 def get_embedding(text):
     """
