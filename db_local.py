@@ -4,7 +4,7 @@ from chromadb import Client
 from chromadb.utils.embedding_functions import DefaultEmbeddingFunction
 from embedding import get_embedding
 from qs import qs
-
+import random
 
 
 
@@ -27,11 +27,19 @@ collection = client.get_or_create_collection("institute_bangla")
 
 
 
+# def save_documents(documents: list[str], metadatas=None):
+#     embeddings = [get_embedding(doc).tolist() for doc in documents]
+#     ids = [f"id_{random.randint(1,100000)}" for i in range(len(documents))]
+#     collection.add(documents=documents, ids=ids, embeddings=embeddings, metadatas=metadatas or [{}])
+#     client.persist()  # Persist the data to disk
 def save_documents(documents: list[str], metadatas=None):
+    print("---------------------------------------------------------------------------------------")
+    print("Embeddings :")
+    print(get_embedding(documents[0]).tolist())
+    
     embeddings = [get_embedding(doc).tolist() for doc in documents]
-    ids = [f"id_{i}" for i in range(len(documents))]
+    ids = [f"id_{random.randint(1,100000)}" for i in range(len(documents))]
     collection.add(documents=documents, ids=ids, embeddings=embeddings, metadatas=metadatas or [{}])
-    client.persist()  # Persist the data to disk
 
 def query_documents(query: str, k: int = 3):
     embedding = get_embedding(query).tolist()
@@ -59,3 +67,12 @@ def load_data():
         initial += 1
 
     print("📥 Data loaded successfully into the database.")
+
+
+if __name__ == "__main__":
+    # Example usage
+    load_data()
+    # user_query = "What is the history of Rajshahi Polytechnic Institute?"
+    # context = ""
+    # response = call_groq_llm(user_query, context)
+    # print(response['choices'][0]['message']['content'])

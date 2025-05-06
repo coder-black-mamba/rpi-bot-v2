@@ -7,7 +7,7 @@ load_dotenv()
 
 client = Groq()
 
-def call_groq_llm(user_query,context,model="gemma2-9b-it"):
+def call_groq_llm(user_query,context,model="llama-3.3-70b-versatile"):
     print("Context: ", context)
     print("\n\n\n ")
     response = client.chat.completions.create(
